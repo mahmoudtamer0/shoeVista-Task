@@ -57,7 +57,7 @@ export const getTopRated = async (req, res) => {
     try {
         const topRatedShoes = await Products.find()
             .sort({ rating: -1 })
-            .limit(12);
+            .limit(6);
         return res.status(200).json(topRatedShoes);
     } catch (err) {
         console.error('Error fetching top-rated shoes:', err);
@@ -70,7 +70,7 @@ export const getBestSellers = async (req, res) => {
     try {
         const products = await Products.find()
             .sort({ reviews: -1 })
-            .limit(12);
+            .limit(6);
 
         return res.status(200).json(products);
     } catch (err) {

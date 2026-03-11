@@ -6,14 +6,16 @@ const ShopBy = ({ filter, title }) => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  console.log(import.meta.env.VITE_BASE_URL)
   useEffect(() => {
+
     let isMounted = true;
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/filter/${filter}`
+          `${import.meta.env.VITE_BASE_URL}/api/products/filter/${filter}`
         );
+        console.log(res)
         if (isMounted) {
           setProducts(res.data);
           setLoading(false);
